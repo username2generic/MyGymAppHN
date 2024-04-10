@@ -36,3 +36,8 @@ class Consumir(models.Model):
 
 class Realizar(models.Model):
     realizarID = models.AutoField(primary_key=True)
+    idUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    idEjercicios = models.ForeignKey(Ejercicios, on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now_add=True)
+    peso = models.FloatField()
+    
