@@ -1,3 +1,4 @@
+
 from django.db import models
 
 class User(models.Model):
@@ -40,4 +41,7 @@ class Realizar(models.Model):
     idEjercicios = models.ForeignKey(Ejercicios, on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True)
     peso = models.FloatField()
-    
+
+
+python manage.py makemigrations
+python manage.py migrate
