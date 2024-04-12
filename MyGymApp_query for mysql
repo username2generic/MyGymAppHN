@@ -1,0 +1,52 @@
+CREATE TABLE Usuario (
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(16),
+    email VARCHAR(45),
+    password VARCHAR(32),
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Alimentos (
+    alimentosID INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(16),
+    calorias VARCHAR(45),
+    tamaño_porción VARCHAR(32),
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    rol VARCHAR(16)
+);
+
+CREATE TABLE Ejercicios (
+    ejerciciosID INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(20),
+    categoría VARCHAR(16),
+    gasto_energetico INT,
+    repeticiones INT
+);
+
+CREATE TABLE Historial_peso (
+    historial_peso_ID INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_peso DATE,
+    peso FLOAT,
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(userID) ON DELETE CASCADE
+);
+
+CREATE TABLE Consumir (
+    consumirID INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT,
+    idAlimentos INT,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    calorias INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(userID) ON DELETE CASCADE,
+    FOREIGN KEY (idAlimentos) REFERENCES Alimentos(alimentosID) ON DELETE CASCADE
+);
+
+CREATE TABLE Realizar (
+    realizarID INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT,
+    idEjercicios INT,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    peso FLOAT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(userID) ON DELETE CASCADE,
+    FOREIGN KEY (idEjercicios) REFERENCES Ejercicios(ejerciciosID) ON DELETE CASCADE
+);
