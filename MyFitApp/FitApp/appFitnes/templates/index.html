@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block  content %}
+    <h1>Pagina principal </h1>
+     <p>Bienvenido a <em>My App Fitness</em>, un sitio en donde podras llevar
+      un control personal de ejercicios y peso</p>
+      <h2>Contamos con:</h2>
+      <ul>
+        <li><strong>Cantidad de usuarios:</strong>{{Usuarios}}</li>
+        <li><strong>Cantidad de ejercicios:</strong>{{Ejercicios}}</li>
+        <li><strong>Cantidad de alimentos:</strong>{{Alimentos}}</li>
+      </ul>
+{% endblock  %}
